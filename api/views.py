@@ -82,7 +82,6 @@ class BillsProductsUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     authentication_class = (TokenAuthentication,)   
 
-
 class ExportImportExcel(APIView):
 
     def get(self, request):
