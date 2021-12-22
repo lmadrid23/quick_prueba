@@ -1,9 +1,7 @@
 #from django.shortcuts import render
-from codecs import lookup_error
 from django.conf import settings
 import pandas as pd
-from django.shortcuts import render
-from rest_framework import generics, serializers
+from rest_framework import generics
 from django.urls import reverse_lazy
 from .models import ExcelFileUpload, Clients, Products, Bills, BillsProducts
 from .serializers import ClientSerializer, ProductSerializer, BillSerializer, BillsProductSerializer
@@ -19,11 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.parsers import JSONParser
-from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
-import json
-import csv
 import uuid
 
 
@@ -110,14 +104,6 @@ class ExportImportExcel(APIView):
                 email= x[3]
             )
         return Response({'status':200})
-
-
-@api_view(['GET','POST'])
-def saveClients(request):
-    excel_upload_obj = ExcelFileUpload.objects.create(excel_file_upload=request.FILES['files'])
-    df = pd.read_csv(f"{settings.BASE_DIR}/static/{excel_upload_obj.excel_file_upload}")
-    print(df.values.tolist())
-    return Response({'status':200})
 
 
 class Login(FormView):

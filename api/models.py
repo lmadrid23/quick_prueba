@@ -1,14 +1,5 @@
 from django.db import models
 
-"""class Person(models.Model):
-    id = models.AutoField(primary_key = True)
-    first_name = models.CharField(blank=True,max_length=100, verbose_name='First name')
-    last_name = models.CharField(blank=True,max_length=200,verbose_name='Last name')
-
-    def __str__ (self):
-        return '{0},{1}'.format(self.last_name,self.first_name)"""
-
-
 class Clients(models.Model):
     id = models.AutoField(primary_key=True, null=False)
     document = models.CharField(blank=True,max_length=50,null=False, unique=True, verbose_name='Document')

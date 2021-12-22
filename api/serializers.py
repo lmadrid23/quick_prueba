@@ -30,12 +30,6 @@ class UserSerializer(serializers.Serializer):
             return data
 
 
-"""class PersonSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Person
-        fields = ('id', 'first_name', 'last_name',)"""
-
-
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clients
@@ -49,7 +43,6 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class BillSerializer(serializers.ModelSerializer):
-    # client = ClientSerializer(read_only=True)
     class Meta:
         model = Bills
         fields = ('id', 'client_id', 'company_name', 'nit', 'code', 'created_on', 'update_at')
